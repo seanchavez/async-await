@@ -25,11 +25,23 @@ async function fetchGithubUser(handle) {
   return body;
 }
 
-fetchGithubUser('frgnchmghf')
-  .then(user => {
-    console.log(user);
-    //console.log(user.location);
-  })
-  .catch(err => {
+async function showGithubUser(handle) {
+  try {
+    const user = await fetchGithubUser(handle);
+    console.log(user.name);
+    console.log(user.location);
+  } catch (err) {
     console.error(`Error: ${err.message}`);
-  });
+  }
+}
+
+showGithubUser('mariusschulz');
+
+// fetchGithubUser('frgnchmghf')
+//   .then(user => {
+//     console.log(user);
+//     //console.log(user.location);
+//   })
+//   .catch(err => {
+//     console.error(`Error: ${err.message}`);
+//   });
